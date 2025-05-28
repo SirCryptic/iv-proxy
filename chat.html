@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐 ChatApp</title>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/589/589708.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/localforage@1.10.0/dist/localforage.min.js"></script>
+  <script src="https://unpkg.com/date-fns@2.30.0/dist/date-fns.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="sidebar">
+      <a class="sidebar-title" href="index.html">🔐 ChatApp</a>
+      <h3>Your Rooms</h3>
+      <div id="room-list"></div>
+      <div id="no-rooms" class="hidden">No rooms yet. Create one!</div>
+    </div>
+    <div class="main-content">
+      <header>🔐 ChatApp</header>
+      <section>
+        <div id="chat-room">
+          <div class="chat-header">
+            <div class="title">
+              <h2 id="room-title" class="text-2xl font-bold">Chat Room</h2>
+              <div id="nickname-display"></div>
+            </div>
+            <div class="actions">
+              <button id="copy-link">Copy Link</button>
+              <button id="leave-room">Leave</button>
+            </div>
+          </div>
+          <div id="chat-error" class="error" role="alert"></div>
+          <div id="chat-success" class="success" role="alert"></div>
+          <div id="messages"></div>
+          <button id="load-more" class="hidden">Load More</button>
+          <form id="message-form">
+            <input id="input-message" type="text" placeholder="Type a message..." required>
+            <button id="send-btn" type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+      <footer>© 2025 ChatApp — Client-side encrypted chat. <a class="privacy-link" href="privacy.html">Privacy Page</a></footer>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>

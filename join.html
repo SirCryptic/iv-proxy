@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐 ChatApp</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/localforage@1.10.0/dist/localforage.min.js"></script>
+  <script src="https://unpkg.com/date-fns@2.30.0/dist/date-fns.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="sidebar">
+      <a class="sidebar-title" href="index.html">🔐 ChatApp</a>
+      <h3>Your Rooms</h3>
+      <div id="room-list"></div>
+      <div id="no-rooms" class="hidden">No rooms yet. Create one!</div>
+    </div>
+    <div class="main-content">
+      <header>🔐 ChatApp</header>
+      <section>
+        <div id="join-room">
+          <div class="content-container">
+            <h2 id="join-room-title" class="text-3xl font-bold">Join Room</h2>
+            <form id="join-room-form">
+              <div id="join-error" class="error" role="alert"></div>
+              <div id="join-loading" class="loading">Joining room...</div>
+              <label for="join-nickname">Nickname</label>
+              <input id="join-nickname" type="text" placeholder="e.g., User123">
+              <label for="join-password">Password</label>
+              <input id="join-password" type="password" placeholder="Password" required>
+              <button id="join-room-submit" type="submit">Join Room</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <footer>© 2025 ChatApp — Client-side encrypted chat. <a class="privacy-link" href="privacy.html">Privacy Page</a></footer>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
