@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Get Discord webhook URL from environment variable
-DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "https://discord.com/api/webhooks/your_webhook_id/your_webhook_token")
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "https://discord.com/api/webhooks/1393588541539487905/AddumHS-dNiQmFti17zi8ZaelHRUWRgiDh7w2TbSEdhkIHnkHMkbfd1tu37ImXHDQpCN")
 
 @app.route('/relay', methods=['GET'])
 def relay():
