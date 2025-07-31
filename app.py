@@ -1,30 +1,20 @@
+# proxy.py
 from flask import Flask, request
 import requests
-import os
 
 app = Flask(__name__)
 
-# Get Discord webhook URL from environment variable
-DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "https://discord.com/api/webhooks/1393588541539487905/AddumHS-dNiQmFti17zi8ZaelHRUWRgiDh7w2TbSEdhkIHnkHMkbfd1tu37ImXHDQpCN")
-
-@app.route('/relay', methods=['GET'])
-def relay():
-    value1 = request.args.get('value1')  # Player name
-    value2 = request.args.get('value2')  # Message
-    if not value1 or not value2:
-        return "Missing value1 or value2", 400
-
+@app.route('/')
+def proxy():
+    webhook = request.args.get('webhook')
+    post_data = request.args.get('postData')
+    if not webhook or not post_data:
+        return {"error": "Missing webhook or postData"}, 400
     try:
-        response = requests.post(DISCORD_WEBHOOK_URL, json={
-            "content": f"{value1} said: {value2}"
-        })
-        if response.status_code != 204:  # Discord webhooks return 204 on success
-            print(f"Failed to send to Discord: {response.status_code}")
-            return "Failed to send to Discord", response.status_code
-        return "OK", 200
+        response = requests.post(webhook, json={'content': post_data}, headers={'Content-Type': 'application/json'})
+        return response.text, response.status_code
     except Exception as e:
-        print(f"Error sending to Discord: {e}")
-        return "Error", 500
+        return {"error": str(e)}, 500
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 3000)))
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80)
