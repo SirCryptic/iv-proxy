@@ -1,6 +1,6 @@
-# proxy.py
 from flask import Flask, request
 import requests
+import json
 
 app = Flask(__name__)
 
@@ -11,6 +11,12 @@ def proxy():
     if not webhook or not post_data:
         return {"error": "Missing webhook or postData"}, 400
     try:
+        # Try to parse as JSON (embed payloads) — forward directly to Discord
+        payload = json.loads(post_data)
+        response = requests.post(webhook, json=payload, headers={'Content-Type': 'application/json'})
+        return response.text, response.status_code
+    except (json.JSONDecodeError, TypeError):
+        # Plain text fallback — wrap in content
         response = requests.post(webhook, json={'content': post_data}, headers={'Content-Type': 'application/json'})
         return response.text, response.status_code
     except Exception as e:
