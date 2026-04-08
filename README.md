@@ -15,6 +15,10 @@ Please note:
 - This is **the only public version** that will ever be released.  
 - You may **not see the same behavior or features** shown on my personal server or in videos made by others.  
 
-This repository remains public for **archival and reference purposes only**.  
+This repository remains public for **archival and reference purposes only**
 
-— **SirCryptic**
+- **SirCryptic**
+
+
+
+- Added support for embeds & re-archived. (08/04/26)
